@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placar Qg</title>
+    <link rel="stylesheet" href="Placar.css">
+    <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-database.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="PlacarQg.js"></script>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                
+                <div class="card primeiro-card" style="width: 18rem;">
+                <img class="card-img-top" src="LogoQg_certo.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Desafio do dia</h5>
+                        <p class="card-text"><Input type="text" class="desafio" id="desafio" placeholder="Digite o desafio do dia"></Input></p>
+
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Placar</div>
+                        <div class="card-body">
+                            <table class="table table-hover" id="scoreboard">
+                                <tr>
+                                  <th>QG</th>
+                                  <th>Pontos</th>
+                                  <th>Adicionar</th>
+                                  <th>Remover</th>
+                                </tr>
+                                <tr>
+                                  <td>Lucas  </td>
+                                  <td id="lucas"> </td> 
+                                  <td><button class="btn btn-outline-success" onclick="addPoints('lucas')">Adicionar Ponto</button></td>
+                                  <td><button class="btn btn-outline-danger" onclick="removePoints('lucas')">Remover Pontos</button></td>
+                                </tr>
+                                <tr>
+                                  <td>Caio</td>
+                                  <td id="caio"></td>
+                                  <td><button class="btn btn-outline-success" onclick="addPoints('caio')">Adicionar Ponto</button></td>
+                                  <td><button class="btn btn-outline-danger" onclick="removePoints('caio')">Remover Pontos</button></td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Pixar  </td>
+                                  <td id="pixar"></td>
+                                  <td><button class="btn btn-outline-success" onclick="addPoints('pixar')">Adicionar Ponto</button></td>
+                                  <td><button class="btn btn-outline-danger" onclick="removePoints('pixar')">Remover Pontos</button></td>
+                                </tr>
+                        
+                                <tr>
+                                    <td>Vicente  </td>
+                                    <td id="vicente"></td>
+                                    <td><button class="botao_mais" onclick="addPoints('vicente')">+</button></td>
+                                    <td><button class="botao_menos" onclick="removePoints('vicente')"> -</button></td>
+                                </tr>
+                        
+                                <tr>
+                                    <td>Holzman  </td>
+                                    <td id="holzman"></td>
+                                    <td><button class="btn btn-outline-success" onclick="addPoints('holzman')">Adicionar Ponto</button></td>
+                                    <td><button class="btn btn-outline-danger" onclick="removePoints('holzman')">Remover Pontos</button></td>
+                                </tr>
+                        
+                                <tr>
+                                    <td>Matias  </td>
+                                    <td id="matias"></td>
+                                    <td><button class="btn btn-outline-success" onclick="addPoints('matias')">Adicionar Ponto</button></td>
+                                    <td><button class="btn btn-outline-danger" onclick="removePoints('matias')">Remover Pontos</button></td>
+                                </tr>
+                        
+                                  <tr>
+                                    <td>Chequer  </td>
+                                    <td id="chequer"></td>
+                                    <td><button class="btn btn-outline-success" onclick="addPoints('chequer')">Adicionar Ponto</button></td>
+                                    <td><button class="btn btn-outline-danger" onclick="removePoints('chequer')">Remover Pontos</button></td>
+                                </tr>
+                        
+                                <tr>
+                                    <td>Narchi  </td>
+                                    <td id="narchi"></td>
+                                    <td><button class="btn btn-outline-success" onclick="addPoints('narchi')">Adicionar Ponto</button></td>
+                                    <td><button class="btn btn-outline-danger" onclick="removePoints('narchi')">Remover Pontos</button></td>
+                                </tr>
+                        
+                                <tr>
+                                    <td>Puccini  </td>
+                                    <td id="puccini"></td>
+                                    <td><button class="btn btn-outline-success" onclick="addPoints('puccini')">Adicionar Ponto</button></td>
+                                    <td><button class="btn btn-outline-danger" onclick="removePoints('puccini')">Remover Pontos</button></td>
+                                </tr>
+                        
+                                <tr>
+                                    <td>Raul  </td>
+                                    <td id="raul"></td>
+                                    <td><button class="btn btn-outline-success" onclick="addPoints('raul')">Adicionar Ponto</button></td>
+                                    <td><button class="btn btn-outline-danger" onclick="removePoints('raul')">Remover Pontos</button></td>
+                                </tr>
+                        
+                                <tr>
+                                    <td>André  </td>
+                                    <td id="andre"></td>
+                                    <td><button class="btn btn-outline-success" onclick="addPoints('andre')">Adicionar Ponto</button></td>
+                                    <td><button class="btn btn-outline-danger" onclick="removePoints('andre')">Remover Pontos</button></td>
+                                </tr>
+                        
+                                <tr>
+                                    <td>Leo  </td>
+                                    <td id="leo"></td>
+                                    <td><button class="btn btn-outline-success" onclick="addPoints('leo')">Adicionar Ponto</button></td>
+                                    <td><button class="btn btn-outline-danger" onclick="removePoints('leo')">Remover Pontos</button></td>
+                                </tr>
+                        
+                                <tr>
+                                    <td>Ramalho  </td>
+                                    <td id="ramalho"></td>
+                                    <td><button class="btn btn-outline-success" onclick="addPoints('ramalho')">Adicionar Ponto</button></td>
+                                    <td><button class="btn btn-outline-danger" onclick="removePoints('ramalho')">Remover Pontos</button></td>
+                                </tr>
+                              </table>
+                        </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+      
+</body>
+
+
+</html>
