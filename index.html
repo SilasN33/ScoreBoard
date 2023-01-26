@@ -16,20 +16,22 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-sm-4">
-                
+            <div class="col-md-4">
                 <div class="card primeiro-card" style="width: 18rem;">
                 <img class="card-img-top" src="LogoQg_certo.png" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Desafio do dia</h5>
-                        <p class="card-text"><Input type="text" class="desafio" id="desafio" placeholder="Digite o desafio do dia"></Input></p>
+                        <h5 class="card-title">Desafio do dia : (com data)</h5>
+                        <input type="text" id="input-text" placeholder="Digite o desafio do dia" class="desafio">
+                        <button class="btn btn-outline-success botao_primeiro_card" onclick="displayText()">Enviar desafio</button>
+                        <button class="btn btn-outline-success botao_primeiro_card"  onclick="showText()"> Ver desafios</button>
+                        <div id="display-text" class="envia_desafio"></div>
+                        <div id="firebase-texts" class="historico_desafio"></div>
 
-                        
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">Placar</div>
                         <div class="card-body">
@@ -63,8 +65,8 @@
                                 <tr>
                                     <td>Vicente  </td>
                                     <td id="vicente"></td>
-                                    <td><button class="botao_mais" onclick="addPoints('vicente')">+</button></td>
-                                    <td><button class="botao_menos" onclick="removePoints('vicente')"> -</button></td>
+                                    <td><button class="btn btn-outline-success" onclick="addPoints('vicente')">Adicionar Ponto</button></td>
+                                    <td><button class="btn btn-outline-danger" onclick="removePoints('vicente')">Remover Pontos</button></td>
                                 </tr>
                         
                                 <tr>

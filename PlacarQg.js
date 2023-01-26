@@ -41,3 +41,21 @@ var firebaseConfig = {
       document.getElementById(integrante).innerHTML = integrantes_qg[integrante];
     }
   }
+
+  function displayText() {
+  var inputText = document.getElementById("input-text").value;
+  document.getElementById("display-text").innerHTML = inputText;
+  firebase.database().ref("texts").push(inputText);
+}
+
+  function showText(){
+    firebase.database().ref("texts").on('value', function(snapshot) {
+      var texts = snapshot.val();
+      var textElements = Object.keys(texts).map(key => {
+        return `<p>${texts[key]}</p>`
+      });
+      document.getElementById("firebase-texts").innerHTML = textElements.join("");
+    });
+  }
+  
+  
