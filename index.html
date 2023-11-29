@@ -1,154 +1,125 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Placar Qg</title>
-    <link rel="stylesheet" href="Placar.css">
-    <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-database.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <script src="PlacarQg.js"></script>
-    
+    <title>Armazenando e Validando Números</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card primeiro-card" style="width: 18rem;">
-                <img class="card-img-top" src="LogoQg_certo.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Desafio do dia : (com data)</h5>
-                        <input type="text" id="input-text" placeholder="Digite o desafio do dia" class="desafio">
-                        <button class="btn btn-outline-success botao_primeiro_card" onclick="displayText()">Enviar desafio</button>
-                        <button class="btn btn-outline-success botao_primeiro_card"  onclick="showText()"> Ver desafios</button>
-                        <div id="display-text" class="envia_desafio"></div>
-                        <div id="firebase-texts" class="historico_desafio"></div>
+<body class="container mt-5">
 
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">Placar</div>
-                        <div class="card-body">
-                            <table class="table table-hover" id="scoreboard">
-                                <tr>
-                                  <th>QG</th>
-                                  <th>Pontos</th>
-                                  <th>Adicionar</th>
-                                  <th>Remover</th>
-                                </tr>
-                                <tr>
-                                  <td>Lucas  </td>
-                                  <td id="lucas"> </td> 
-                                  <td><button class="btn btn-outline-success" onclick="addPoints('lucas')">Adicionar Ponto</button></td>
-                                  <td><button class="btn btn-outline-danger" onclick="removePoints('lucas')">Remover Pontos</button></td>
-                                </tr>
-                                <tr>
-                                  <td>Caio</td>
-                                  <td id="caio"></td>
-                                  <td><button class="btn btn-outline-success" onclick="addPoints('caio')">Adicionar Ponto</button></td>
-                                  <td><button class="btn btn-outline-danger" onclick="removePoints('caio')">Remover Pontos</button></td>
-                                </tr>
-                                
-                                <tr>
-                                  <td>Pixar  </td>
-                                  <td id="pixar"></td>
-                                  <td><button class="btn btn-outline-success" onclick="addPoints('pixar')">Adicionar Ponto</button></td>
-                                  <td><button class="btn btn-outline-danger" onclick="removePoints('pixar')">Remover Pontos</button></td>
-                                </tr>
-                        
-                                <tr>
-                                    <td>Vicente  </td>
-                                    <td id="vicente"></td>
-                                    <td><button class="btn btn-outline-success" onclick="addPoints('vicente')">Adicionar Ponto</button></td>
-                                    <td><button class="btn btn-outline-danger" onclick="removePoints('vicente')">Remover Pontos</button></td>
-                                </tr>
-                        
-                                <tr>
-                                    <td>Holzman  </td>
-                                    <td id="holzman"></td>
-                                    <td><button class="btn btn-outline-success" onclick="addPoints('holzman')">Adicionar Ponto</button></td>
-                                    <td><button class="btn btn-outline-danger" onclick="removePoints('holzman')">Remover Pontos</button></td>
-                                </tr>
-                        
-                                <tr>
-                                    <td>Matias  </td>
-                                    <td id="matias"></td>
-                                    <td><button class="btn btn-outline-success" onclick="addPoints('matias')">Adicionar Ponto</button></td>
-                                    <td><button class="btn btn-outline-danger" onclick="removePoints('matias')">Remover Pontos</button></td>
-                                </tr>
-                        
-                                  <tr>
-                                    <td>Chequer  </td>
-                                    <td id="chequer"></td>
-                                    <td><button class="btn btn-outline-success" onclick="addPoints('chequer')">Adicionar Ponto</button></td>
-                                    <td><button class="btn btn-outline-danger" onclick="removePoints('chequer')">Remover Pontos</button></td>
-                                </tr>
-                        
-                                <tr>
-                                    <td>Narchi  </td>
-                                    <td id="narchi"></td>
-                                    <td><button class="btn btn-outline-success" onclick="addPoints('narchi')">Adicionar Ponto</button></td>
-                                    <td><button class="btn btn-outline-danger" onclick="removePoints('narchi')">Remover Pontos</button></td>
-                                </tr>
-                        
-                                <tr>
-                                    <td>Puccini  </td>
-                                    <td id="puccini"></td>
-                                    <td><button class="btn btn-outline-success" onclick="addPoints('puccini')">Adicionar Ponto</button></td>
-                                    <td><button class="btn btn-outline-danger" onclick="removePoints('puccini')">Remover Pontos</button></td>
-                                </tr>
-
-                                <tr>
-                                    <td>Silas  </td>
-                                    <td id="silas"></td>
-                                    <td><button class="btn btn-outline-success" onclick="addPoints('silas')">Adicionar Ponto</button></td>
-                                    <td><button class="btn btn-outline-danger" onclick="removePoints('silas')">Remover Pontos</button></td>
-                                </tr>
-                        
-                                <tr>
-                                    <td>Raul  </td>
-                                    <td id="raul"></td>
-                                    <td><button class="btn btn-outline-success" onclick="addPoints('raul')">Adicionar Ponto</button></td>
-                                    <td><button class="btn btn-outline-danger" onclick="removePoints('raul')">Remover Pontos</button></td>
-                                </tr>
-                        
-                                <tr>
-                                    <td>André  </td>
-                                    <td id="andre"></td>
-                                    <td><button class="btn btn-outline-success" onclick="addPoints('andre')">Adicionar Ponto</button></td>
-                                    <td><button class="btn btn-outline-danger" onclick="removePoints('andre')">Remover Pontos</button></td>
-                                </tr>
-                        
-                                <tr>
-                                    <td>Leo  </td>
-                                    <td id="leo"></td>
-                                    <td><button class="btn btn-outline-success" onclick="addPoints('leo')">Adicionar Ponto</button></td>
-                                    <td><button class="btn btn-outline-danger" onclick="removePoints('leo')">Remover Pontos</button></td>
-                                </tr>
-                        
-                                <tr>
-                                    <td>Ramalho  </td>
-                                    <td id="ramalho"></td>
-                                    <td><button class="btn btn-outline-success" onclick="addPoints('ramalho')">Adicionar Ponto</button></td>
-                                    <td><button class="btn btn-outline-danger" onclick="removePoints('ramalho')">Remover Pontos</button></td>
-                                </tr>
-                              </table>
-                        </div>
-                  </div>
-            </div>
-        </div>
+    <div class="mb-3">
+        <label for="numero" class="form-label">Digite o número que saiu:</label>
+        <input type="text" class="form-control" id="numero" placeholder="Digite o número">
     </div>
 
-    
-    
-      
+    <button class="btn btn-primary" onclick="adicionarNumero()">Adicionar Número</button>
+
+    <h3 class="mt-4">Historico:</h3>
+    <div id="historico" class="list-group"></div>
+
+    <h1 id="resultado" class="mt-4">Estratégia</h1>
+
+ 
+
+    <h3 class="mt-4">Jogada:</h3>
+    <ul id="numerosValidados" class="list-group"></ul>
+
+    <script>
+        var vizinhos_zero = [0, 1, 3, 5, 8, 10, 11, 14, 15, 20, 23, 24, 26, 30, 31, 32, 33, 36, '0 e Vizinhos'];
+        var vizinhos_um = [1, 2, 4, 9, 13, 14, 16, 19, 20, 21, 22, 25, 31, 33, 36, '1 e Vizinhos'];
+        var vizinhos_dois = [0, 2, 3, 4, 7, 9, 12, 15, 17, 18, 21, 22, 25, 26, 28, 29, 31, 32, 35, 36, '2 e Vizinhos'];
+        var vizinhos_tres = [0, 1, 3, 5, 6, 8, 10, 11, 12, 13, 16, 20, 23, 24, 26, 30, 33, 35, 36, '3 e Vizinhos'];
+        var vizinhos_quatro = [1, 2, 4, 5, 9, 14, 15, 16, 19, 20, 21, 24, 25, 27, 31, 33, 34, 36, '4 e Vizinhos'];
+        var vizinhos_cinco = [0, 2, 3, 4, 5, 10, 15, 16, 17, 19, 21, 23, 24, 26, 28, 32, 34, 35, 36, '5 e Vizinhos'];
+        var vizinhos_seis = [0, 1, 5, 6, 10, 11, 13, 16, 17, 26, 27, 32, 33, 34, 36, '6 e Vizinhos'];
+        var vizinhos_sete = [2, 7, 12, 17, 18, 28, 29, 34, 36, '7 e Vizinhos'];
+        var vizinhos_oito = [7, 8, 10, 11, 12, 18, 22, 23, 28, 29, 30, 35, '8 e Vizinhos'];
+        var vizinhos_nove = [9, 14, 18, 22, 28, 29, 31, 32, '9 e Vizinhos'];
+
+
+        var numerosDigitados = [];
+
+        function adicionarNumero() {
+            var inputNumero = document.getElementById('numero');
+            var numeroDigitado = inputNumero.value;
+
+            if (!isNaN(numeroDigitado) && numeroDigitado !== '') {
+                numerosDigitados.push(Number(numeroDigitado));
+                atualizarListaNumeros();
+                validarNumeros();
+                inputNumero.value = '';
+            } else {
+                alert('Por favor, insira um número válido.');
+            }
+        }
+
+        function atualizarListaNumeros() {
+            var historicoElement = document.getElementById('historico');
+            historicoElement.innerHTML = '';
+
+            if (numerosDigitados.length > 0) {
+                var span = document.createElement('span');
+                span.className = 'mr-2 d-inline-block'; // Adicionando classe para exibir como bloco em linha
+                span.appendChild(document.createTextNode(numerosDigitados.join(' ')));
+                historicoElement.appendChild(span);
+            }
+        }
+
+        function validarNumeros() {
+            var numerosValidos = [];
+
+            if (numerosDigitados.length > 0) {
+                var num = numerosDigitados[numerosDigitados.length - 1];
+
+                if (num === 0 || num === 10 || num === 20 || num === 30) {
+                    numerosValidos = vizinhos_zero.slice(); // Usando slice para criar uma cópia da lista
+                } else if (num === 1 || num === 11 || num === 21 || num === 31) {
+                    numerosValidos = vizinhos_um.slice();
+                } else if (num === 2 || num === 12 || num === 22 || num === 32) {
+                    numerosValidos = vizinhos_dois.slice();
+                } else if (num === 3 || num === 13 || num === 23 || num === 33) {
+                    numerosValidos = vizinhos_tres.slice();
+                } else if (num === 4 || num === 14 || num === 24 || num === 34) {
+                    numerosValidos = vizinhos_quatro.slice();
+                }
+                else if (num === 5 || num === 15 || num === 25 || num === 35) {
+                    numerosValidos = vizinhos_cinco.slice();
+                }
+                else if (num === 6 || num === 16 || num === 26 || num === 36) {
+                    numerosValidos = vizinhos_seis.slice();
+                }
+                else if (num === 7 || num === 17 || num === 27 ) {
+                    numerosValidos = vizinhos_sete.slice();
+                }
+                else if (num === 8 || num === 18 || num === 28 ) {
+                    numerosValidos = vizinhos_oito.slice();
+                }
+                else if (num === 9 || num === 19 || num === 29 ) {
+                    numerosValidos = vizinhos_nove.slice();
+                }
+                
+            }
+
+            atualizarListaValidados(numerosValidos);
+        }
+
+        function atualizarListaValidados(numerosValidos) {
+            var listaValidadosElement = document.getElementById('numerosValidados');
+            listaValidadosElement.innerHTML = '';
+
+            for (var i = 0; i < numerosValidos.length; i++) {
+                var li = document.createElement('li');
+                li.className = 'list-group-item';
+                li.appendChild(document.createTextNode(numerosValidos[i]));
+                listaValidadosElement.appendChild(li);
+            }
+
+            // Movendo o h1 acima das tabelas
+            var resultadoElement = document.getElementById('resultado');
+            resultadoElement.innerHTML = '<h1>' + numerosValidos[numerosValidos.length - 1] + '</h1>';
+        }
+    </script>
+
 </body>
-
-
 </html>
